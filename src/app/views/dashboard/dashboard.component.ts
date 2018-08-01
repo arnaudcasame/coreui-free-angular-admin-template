@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 
+import { DataGetterService } from '../../data-getter.service';
+
 @Component({
   templateUrl: 'dashboard.component.html'
 })
@@ -372,6 +374,8 @@ export class DashboardComponent implements OnInit {
   public brandBoxChartLegend = false;
   public brandBoxChartType = 'line';
 
+  constructor(private _dataGetter: DataGetterService) {  }
+
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
@@ -383,6 +387,8 @@ export class DashboardComponent implements OnInit {
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
+
+    const well = this._dataGetter.getData().subscribe(result => console.log(result.json()));
   }
 
   radioModel: string = 'Month';
