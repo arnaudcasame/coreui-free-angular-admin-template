@@ -8,13 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: "root"
 })
 export class DataGetterService {
-  private url =
-    // tslint:disable-next-line:max-line-length
-    "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=MSFT&apikey=demo";
-
-  constructor(private _http: Http) {
-    console.log("I ran perfectly");
-  }
+  constructor(private _http: Http) {}
 
   log(msg, result): void {
     console.log(msg, result);
@@ -24,12 +18,8 @@ export class DataGetterService {
     console.log(text, arr);
   }
 
-  public getData(): Observable<any> {
-    return this._http.get(this.url).pipe(result => result);
+  public getData(by): Observable<any> {
+    let url = `https://www.alphavantage.co/query?function=${by}&symbol=MSFT&apikey=demo`;
+    return this._http.get(url).pipe(result => result);
   }
-
-  // public makeServiceCall: Observable (){
-
-  //   return Observable;
-  // }
 }

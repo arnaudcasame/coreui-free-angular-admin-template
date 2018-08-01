@@ -103,6 +103,79 @@
       </div>
     </div><!--/.col-->
   </div><!--/.row-->
+  <!-- Perspecta Assignment Start -->
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-5">
+          <h4 class="card-title mb-0">{{alphaVantageStockTitle}}</h4>
+          <div class="small text-muted">last 60 results</div>
+        </div>
+        <!--/.col-->
+        <div class="col-sm-7 d-none d-md-block">
+          <button type="button" class="btn btn-primary float-right">
+            <i class="icon-cloud-download"></i>
+          </button>
+          <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
+            <label class="btn btn-outline-secondary" (click)="filterDataBy('TIME_SERIES_DAILY_ADJUSTED')" [(ngModel)]="radioModel" btnRadio="Day" id="option1">Daily</label>
+            <label class="btn btn-outline-secondary" (click)="filterDataBy('TIME_SERIES_WEEKLY')" [(ngModel)]="radioModel" btnRadio="Week" id="option2">Weekly</label>
+            <label class="btn btn-outline-secondary" (click)="filterDataBy('TIME_SERIES_MONTHLY')" [(ngModel)]="radioModel" btnRadio="Month" id="option3">Monthly</label>
+          </div>
+        </div>
+        <!--/.col-->
+      </div>
+      <!--/.row-->
+      <div class="chart-wrapper" style="height:300px;margin-top:40px;">
+        <canvas baseChart class="chart"
+        [datasets]="alphaVantageData"
+        [labels]="alphaVantageLabels"
+        [options]="alphaVantageOptions"
+        [colors]="mainChartColours"
+        [legend]="mainChartLegend"
+        [chartType]="mainChartType"></canvas>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="row text-center">
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">High</div>
+          <strong></strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">Open</div>
+          <strong></strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">Close</div>
+          <strong></strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">Low</div>
+          <strong></strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">Volume</div>
+          <strong></strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Perspecta Assignment End -->
   <div class="card">
     <div class="card-body">
       <div class="row">
